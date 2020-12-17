@@ -27,7 +27,7 @@ module Api
             def update 
                 @task = Task.find(params[:id])
                 if(@task.update(task_params))
-                    redirect_to @task
+                    render json: @task
                     else
                         render json:{ error: task.errors.messages }
                     end
@@ -39,7 +39,17 @@ module Api
         
                 redirect_to tasks_path
             end
+
+            # def all_tasks 
+            #     completed = Task.where(completed: true)
+            #     incomplete = Task.where(completed: false)
+            #     render json: {completed: completed. incomplete: incomplete}
+            # end
+            
             
             private def task_params
                 params.require(:task).permit(:name)
             end
+        end
+    end
+end

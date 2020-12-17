@@ -1,13 +1,15 @@
 module Api
     module V1
         class ListsController < ApplicationController
+
             def index
                 @lists = List.all
-                render json: @lists
+                render json: @lists, include: 'tasks'
             end 
             
             def show 
-                @list = List.find_by(slug: params[:slug])
+                @list = List.find_by(id: params[:id])
+                render json: @list, include: 'tasks'
             end
             
             def new 
@@ -24,25 +26,25 @@ module Api
             end
             
             def edit
-                @list = List.find_by(slug: params[:slug])
+                @list = List.find_by(id: params[:id])
             end
 
             def update 
-                @list = List.find_by(slug: params[:slug])
+                @list = List.find_by(id: params[:id])
                 if(@list.update(list_params))
-                    redirect_to @list
+                    render json: @list
                     else
                         render json:{ error: list.errors.messages }
                     end
             end 
 
             def destroy
-                @list = List.find_by(slug: params[:slug])
+                @list = List.find_by(id: params[:id])
                 @list.destroy
             end 
 
             private
-            def post_params
+            def list_params
                 params.require(:list).permit(:title)
             end
 

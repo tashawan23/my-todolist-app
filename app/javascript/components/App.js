@@ -1,14 +1,28 @@
-import React from 'react'
-import { Route, Switch } from 'react-router-dom'
-import List from './List'
+import React, {useState} from 'react'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Lists from './Lists'
+import List from './List'
+import {Navbar} from './layout/Navbar'
+import {Sidebar} from './layout/Sidebar'
+import './App.scss'
+import { ListsProvider, SelectedListProvider } from '../context'
+import { Tasks } from './Tasks'
 
-export const App = () => {
+const App = () => {
+
     return (
+        <SelectedListProvider>
+        <ListsProvider>
+        <Navbar />
+        <Sidebar />
+        <Tasks />
+        <BrowserRouter>
         <Switch>
-            <Route exact path="/" component={Lists}/>
             <Route exact path="/lists/:slug" component={List}/>
-        </Switch>
+         </Switch>
+         </BrowserRouter>
+         </ListsProvider>
+         </SelectedListProvider>
     )
 }
 

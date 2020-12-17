@@ -22,8 +22,12 @@ ActiveRecord::Schema.define(version: 2020_12_11_031842) do
   create_table "tasks", force: :cascade do |t|
     t.string "name"
     t.boolean "completed"
+    t.string "date"
+    t.integer "list_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["list_id"], name: "index_tasks_on_list_id"
   end
 
+  add_foreign_key "tasks", "lists"
 end

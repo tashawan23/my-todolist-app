@@ -1,8 +1,8 @@
 class List < ApplicationRecord
     has_many :tasks
 
-    def slugify
-        self.slug = title.parameterize
-    end
-    
+    before_create -> (list) do
+        list.slug = list.title.parameterize
+      end
+
 end

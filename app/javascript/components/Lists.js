@@ -1,9 +1,40 @@
-import React from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
+import List from './List'
+import { useListsValue, useSelectedListValue } from '../context';
 
-export default Lists = () => {
+const Lists = () => {
+    const { lists } = useListsValue();
+    const[selected, setSelected] = useState('');
+    const { setSelectedList } = useSelectedListValue();
+
     return (
-        <div>
-            This is the Lists#index view of our app.
-        </div>
-    )
-}
+        lists.map((value, index) => (
+          <li
+            className={
+              selected === value.slug
+                ? 'selected sidebar__list'
+                : 'sidebar__list' 
+            } key={index}
+          >
+            <div
+              role="button"
+              aria-label={`Select ${value.title} as list`}
+              onClick={() => {
+                setSelected(value.id);
+                setSelectedList(value);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  setSelected(value.id);
+                  setSelectedList(value);
+                  console.log(value.id)
+                }
+              }}
+            >
+                <List list={value} />
+            </div>
+          </li>
+        ))
+      );
+    };
+export default Lists
