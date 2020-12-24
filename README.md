@@ -1,24 +1,26 @@
-# README
+# MyToDo
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Scope of project
+This todo list aims to allow users to keep track of tasks that need to be completed. Users can categorise these tasks based on different categories in each list or by date. Users will be able to create, edit and delete tasks and lists.
 
-Things you may want to cover:
+### Problems encountered:
 
-* Ruby version
 
-* System dependencies
 
-* Configuration
 
-* Database creation
 
-* Database initialization
+### Front-end:
+1.React
+2.React Hooks
+3.React Context
 
-* How to run the test suite
+### Back-end:
+1.Ruby on rails
+2.Database: SQLite
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
-
-* ...
+### To be done by next submission:
+1.Allow editing of tasks - name and date
+2.Create the today page - tasks that need to be completed on that day
+3.Create the weekly page - tasks that need to be completed in that week
+4.Categorise tasks based on date
