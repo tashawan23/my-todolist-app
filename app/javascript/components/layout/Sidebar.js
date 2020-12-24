@@ -7,15 +7,7 @@ import AddList from '../AddList'
 
 export const Sidebar = () => {
     const [showLists, setShowLists] = useState(false);
-    //console.log(lists);
-
-    //fetch todo lists from api 
-    // useEffect(() => {
-    //     axios.get('/api/v1/lists.json')
-    //     .then(res => {
-    //         setLists(res.data)})
-    //     .catch(res =>  console.log(res))
-    // }, [lists.length]);
+    const [showToday, setShowToday] = useState(false);
 
     return (
         <div className="sidebar">

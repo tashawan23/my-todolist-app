@@ -9,9 +9,15 @@ module Api
             def edit
                 @task = Task.find(params[:id])
             end 
+
+            def index
+                @tasks = Task.all
+                render json: @tasks
+            end 
             
             def show 
                 @task = Task.find(params[:id])
+                render json: @task
             end 
             
             def create 
@@ -20,7 +26,7 @@ module Api
                 if(@task.save)
                 render json: @task
                 else
-                    render json:{ error: task.errors.messages }
+                    render json:{ error: @task.errors.messages }
                 end
             end
 
@@ -29,15 +35,14 @@ module Api
                 if(@task.update(task_params))
                     render json: @task
                     else
-                        render json:{ error: task.errors.messages }
+                        render json:{ error: @task.errors.messages }
                     end
             end 
         
             def destroy
                 @task = Task.find(params[:id])
                 @task.destroy
-        
-                redirect_to tasks_path
+    
             end
 
             # def all_tasks 
@@ -48,7 +53,7 @@ module Api
             
             
             private def task_params
-                params.require(:task).permit(:name)
+                params.require(:task).permit(:name, :list_id, :completed, :date)
             end
         end
     end

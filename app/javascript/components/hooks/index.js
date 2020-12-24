@@ -14,3 +14,17 @@ export const useLists = () => {
     return { lists, setLists }
     ;
 }
+
+export const useTasks = selectedList => {
+    const [tasks, setTasks] = useState([]);
+    useEffect(() => {
+        axios.get('/api/v1/tasks.json')
+        .then(res => {
+            setTasks(res.data.filter((task) => task.list_id === selectedList.id))})
+        .catch(res =>  console.log(res))
+    }, [selectedList]);
+
+    return { tasks, setTasks };
+
+
+}

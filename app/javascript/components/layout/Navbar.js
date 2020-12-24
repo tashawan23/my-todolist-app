@@ -1,7 +1,13 @@
-import React from 'react'
-import { FaCheckCircle, FaRegCalendarPlus } from 'react-icons/fa'
+import React, { useState } from 'react'
+import { FaCheckCircle, FaRegCalendarPlus, FaRegPaperPlane } from 'react-icons/fa'
+import { AddTask } from '../AddTask'
 
 export const Navbar = () => {
+    const [showAddMain, setShowAddMain] = useState(false)
+
+    const handleClick = () => {
+        setShowAddMain(true)
+    }
     return (
         <header className="header">
              <nav>
@@ -9,23 +15,23 @@ export const Navbar = () => {
                      <span>
                      MyToDo
                      </span>
-                     <span>
-                     <FaCheckCircle />
+                     <span className="logo">
+                     <FaRegPaperPlane />
                      </span>
                      <span
                         className="create_task"
                         tabIndex={0}
                         role="button"
                         aria-label="Create task"
-                        onClick={() => handleCreate()}
+                        onClick={() => { handleClick() }}
                 >
-                     <span>
+                     <span className="add-task-cal">
                          <FaRegCalendarPlus />
                      </span>
                      </span>
                      </div>
-
             </nav>
+            <AddTask showAddMain={showAddMain} setShowAddMain={setShowAddMain} />
         </header>
        
     )

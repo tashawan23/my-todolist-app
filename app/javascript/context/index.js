@@ -9,6 +9,12 @@ import {
     SelectedListProvider,
     useSelectedListValue,
   } from './selectedList-context';
+
+  import {
+    TasksContext,
+    TasksProvider,
+    useTasksValue,
+  } from './tasks-context';
   
 
    export {
@@ -18,4 +24,7 @@ import {
     SelectedListContext,
     SelectedListProvider,
     useSelectedListValue,
+    TasksContext,
+    TasksProvider,
+    useTasksValue,
   };

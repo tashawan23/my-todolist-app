@@ -5,7 +5,7 @@ import List from './List'
 import {Navbar} from './layout/Navbar'
 import {Sidebar} from './layout/Sidebar'
 import './App.scss'
-import { ListsProvider, SelectedListProvider } from '../context'
+import { ListsProvider, SelectedListProvider, TasksProvider } from '../context'
 import { Tasks } from './Tasks'
 
 const App = () => {
@@ -13,6 +13,7 @@ const App = () => {
     return (
         <SelectedListProvider>
         <ListsProvider>
+            <TasksProvider>
         <Navbar />
         <Sidebar />
         <Tasks />
@@ -21,6 +22,7 @@ const App = () => {
             <Route exact path="/lists/:slug" component={List}/>
          </Switch>
          </BrowserRouter>
+         </TasksProvider>
          </ListsProvider>
          </SelectedListProvider>
     )

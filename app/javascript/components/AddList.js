@@ -19,17 +19,11 @@ const AddList = ({shouldDisplay = false}) => {
     const handleSubmit = e => {
         e.preventDefault();
        axios.post('/api/v1/lists', {...list})
-       .then((resp) => 
-       console.log(resp))
-       .catch( resp => {
-        let error
-        switch(resp.message){
-          case "Request failed with status code 401":
-            error = 'Please log in to leave a review.'
-            break
-          default:
-            error = 'Something went wrong.'
-        }})
+       .then((resp) => {
+       console.log(resp)
+       setTitle("")})
+       .catch( content => console.log('Error', content)
+        )
         setDisplay(false)
         setLists([...lists].concat({...list}))
     }
@@ -40,7 +34,7 @@ const AddList = ({shouldDisplay = false}) => {
       <div className="add-list__inner">
           <div className="add-list__header">Create a new List</div>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker"
+              className="add-list__input"
               type="text"
               placeholder="Add List Title"
               name="title"
