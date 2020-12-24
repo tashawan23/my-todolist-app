@@ -10,17 +10,17 @@ This todo list aims to allow users to keep track of tasks that need to be comple
 
 
 ### Front-end:
-1.React
-2.React Hooks
-3.React Context
+1. React
+1. React Hooks
+1. React Context
 
 ### Back-end:
-1.Ruby on rails
-2.Database: SQLite
+1. Ruby on rails
+1. Database: SQLite
 
 
 ### To be done by next submission:
-1.Allow editing of tasks - name and date
-2.Create the today page - tasks that need to be completed on that day
-3.Create the weekly page - tasks that need to be completed in that week
-4.Categorise tasks based on date
+1. Allow editing of tasks - name and date
+2. Create the today page - tasks that need to be completed on that day
+3. Create the weekly page - tasks that need to be completed in that week
+4. Categorise tasks based on date
