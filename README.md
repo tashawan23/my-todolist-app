@@ -17,6 +17,12 @@ This todo list aims to allow users to keep track of tasks that need to be comple
 1. Ruby on rails
 1. Database: SQLite
 
+| Field         | Type          | Remark           |
+| ------------- |:-------------:| ----------------:|
+| Name          | String        | Name of the task |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+
 
 ### To be done by next submission:
 1. Allow editing of tasks - name and date
