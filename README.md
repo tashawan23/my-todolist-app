@@ -3,6 +3,24 @@
 ### Scope of project
 This todo list aims to allow users to keep track of tasks that need to be completed. Users can categorise these tasks based on different categories in each list or by date. Users will be able to create, edit and delete tasks and lists.
 
+### Features
+1. Lists
+  a. Create list of tasks
+  b. Edit list title
+  d. Delete entire list
+     
+2. Tasks
+  a. Create new task
+  b. Categorise task based on lists
+  c. Categorise tasks based on date to be completed
+  d. Edit task name or task date
+  e. Delete task
+
+3. Categorising by date:
+  a. Users can see tasks that have to be completed ‘today’
+  b. Users can see tasks that have to be completed ‘weekly’, categorised by date
+
+
 ### Problems encountered:
 1. Categorising tasks based on date to be completed in database
 2. Using react hooks and context to update the state of tasks and lists after each edit or deletion 
