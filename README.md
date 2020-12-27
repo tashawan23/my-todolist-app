@@ -5,9 +5,9 @@ This todo list aims to allow users to keep track of tasks that need to be comple
 
 ### Features
 1. Lists
-  ..* Create list of tasks
-  ..* Edit list title
-  ..* Delete entire list
+  ⋅⋅* Create list of tasks
+  ⋅⋅* Edit list title
+  ⋅⋅* Delete entire list
      
 2. Tasks
   ..* Create new task
