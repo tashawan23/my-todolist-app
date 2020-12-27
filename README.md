@@ -5,20 +5,20 @@ This todo list aims to allow users to keep track of tasks that need to be comple
 
 ### Features
 1. Lists
-  1. Create list of tasks
-  1. Edit list title
-  1. Delete entire list
+  ..* Create list of tasks
+  ..* Edit list title
+  ..* Delete entire list
      
 2. Tasks
-  1. Create new task
-  1. Categorise task based on lists
-  1. Categorise tasks based on date to be completed
-  1. Edit task name or task date
-  1. Delete task
+  ..* Create new task
+  ..* Categorise task based on lists
+  ..* Categorise tasks based on date to be completed
+  ..* Edit task name or task date
+  ..* Delete task
 
 3. Categorising by date:
-  1. Users can see tasks that have to be completed ‘today’
-  1. Users can see tasks that have to be completed ‘weekly’, categorised by date
+  ..* Users can see tasks that have to be completed ‘today’
+  ..* Users can see tasks that have to be completed ‘weekly’, categorised by date
 
 
 ### Problems encountered:
