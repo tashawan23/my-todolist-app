@@ -4,17 +4,16 @@
 This todo list aims to allow users to keep track of tasks that need to be completed. Users can categorise these tasks based on different categories in each list or by date. Users will be able to create, edit and delete tasks and lists.
 
 ### Problems encountered:
+1. Categorising tasks based on date to be completed in database
+2. Using react hooks and context to update the state of tasks and lists after each edit or deletion 
+4. Allow scrolling for overflow in sidebar menu
 
-
-
-
-
-### Front-end:
+### Front End:
 1. React
 1. React Hooks
 1. React Context
 
-### Back-end:
+### Back End:
 1. Ruby on rails
 1. Database: SQLite
 
@@ -24,3 +23,4 @@ This todo list aims to allow users to keep track of tasks that need to be comple
 2. Create the today page - tasks that need to be completed on that day
 3. Create the weekly page - tasks that need to be completed in that week
 4. Categorise tasks based on date
+5. Create a homepage
