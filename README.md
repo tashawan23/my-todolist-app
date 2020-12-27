@@ -17,13 +17,20 @@ This todo list aims to allow users to keep track of tasks that need to be comple
 1. Ruby on rails
 1. Database: SQLite
 
-###Task:
+### Task:
 | Field         | Type          | Remark                             |
 | ------------- |:-------------:| ----------------------------------:|
 | Name          | String        | Name of the task                   |
 | Completed     | Boolean       | To mark whether a task is completed|
 | Date          | Date          | Date to be completed               |
 | List          | belongs_to    | List which task belongs to         |
+
+### List:
+| Field         | Type          | Remark                             |
+| ------------- |:-------------:| ----------------------------------:|
+| Title         | String        | Title of list of tasks             |
+| Slug          | String        | Parameter to identify list         |
+
 
 
 ### To be done by next submission:
