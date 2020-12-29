@@ -5,13 +5,14 @@ import List from './List'
 import {Navbar} from './layout/Navbar'
 import {Sidebar} from './layout/Sidebar'
 import './App.scss'
-import { ListsProvider, SelectedListProvider, TasksProvider } from '../context'
+import { ListsProvider, SelectedListProvider, TasksProvider, TodayInboxProvider } from '../context'
 import { Tasks } from './Tasks'
 
 const App = () => {
 
     return (
         <SelectedListProvider>
+            <TodayInboxProvider>
         <ListsProvider>
             <TasksProvider>
         <Navbar />
@@ -24,6 +25,7 @@ const App = () => {
          </BrowserRouter>
          </TasksProvider>
          </ListsProvider>
+         </TodayInboxProvider>
          </SelectedListProvider>
     )
 }

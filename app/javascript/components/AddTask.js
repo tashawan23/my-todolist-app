@@ -108,6 +108,24 @@ export const AddTask = ({
           >
             Cancel
           </span>
+                  {showAddMain &&
+                  <TaskList
+                  showTaskLists={showTaskLists} 
+                  setShowTaskLists={setShowTaskLists}
+                  setList={setList} 
+                  setSelectedList={setSelectedList}
+               />  
+                  }
+                  {showAddMain &&
+                  <span
+                  className="add-task__lists"
+                  onClick={() => setShowTaskLists(!showTaskLists)}
+                  tabIndex={0}
+                  role="button"
+              >
+                  <FaRegListAlt />
+                  </span>
+          }
           <span
               className="add-task__date"
               onClick={() => setShowTaskDate(!showTaskDate)}
@@ -119,27 +137,10 @@ export const AddTask = ({
               >
                   <FaCalendarAlt />
                   </span>
-                  { showTaskDate && 
+                   { showTaskDate && 
                   <DatePicker className="add-task__datepick" selected={taskDate} onChange={e => setTaskDate(e)} /> 
           }
-                  {showAddMain &&
-                  <span
-                  className="add-task__lists"
-                  onClick={() => setShowTaskLists(!showTaskLists)}
-                  tabIndex={0}
-                  role="button"
-              >
-                  <FaRegListAlt />
-                  </span>
-    }
-                  {showAddMain &&
-                  <TaskList
-                  showTaskLists={showTaskLists} 
-                  setShowTaskLists={setShowTaskLists}
-                  setList={setList} 
-                  setSelectedList={setSelectedList}
-               />  
-                  }
+          
         </div>
     )}
         </div> 

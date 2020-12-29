@@ -1,19 +1,19 @@
 import React, {useState, useEffect} from 'react'
 import { FaChevronDown, FaRegCalendarAlt, FaRegClock } from 'react-icons/fa'
 import Lists  from '../Lists'
-import { useListsValue } from '../../context'
+import { useListsValue, useTodayInboxValue } from '../../context'
 import AddList from '../AddList'
 
 
 export const Sidebar = () => {
-    const [showLists, setShowLists] = useState(false);
-    //const [showToday, setShowToday] = useState(false);
+    const [showLists, setShowLists] = useState(false)
+    const { todayInbox, setTodayInbox} = useTodayInboxValue()
 
     return (
         <div className="sidebar">
             <ul className="sidebar__generic">
                 <li>
-                    <span>
+                    <span >
                         <FaRegCalendarAlt />
                         </span>
                     <span>
@@ -24,7 +24,9 @@ export const Sidebar = () => {
                     <span>
                         <FaRegClock />
                         </span>
-                    <span>
+                    <span
+                    className="sidebar__today"
+                    onClick={() => setTodayInbox(!todayInbox)}>
                         Today
                         </span>
                     </li>

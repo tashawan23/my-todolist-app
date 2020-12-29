@@ -85,10 +85,6 @@ export const EditTask = props => {
           >
             Cancel
           </span>
-          {showTaskDate && <DatePicker className="edit-task__datepick" 
-          selected={taskDate} 
-          onChange={(e) => setTaskDate(e)} /> 
-            }
           <span
               className="edit-task__date"
               onClick={() => setShowTaskDate(!showTaskDate)}
@@ -100,8 +96,12 @@ export const EditTask = props => {
               >
                   <FaCalendarAlt />
                   </span>
+                  {showTaskDate && <DatePicker className="edit-task__datepick" 
+                  selected={taskDate} 
+                  onChange={(e) => setTaskDate(e)} /> 
+            }
                   <span
-                className="edit-task__delete"
+                className={ showTaskDate ? "edit-task__delete" : "edit-task__deletewithout"}
                 tabIndex={0}
                 role="button"
                 aria-label="Delete list"

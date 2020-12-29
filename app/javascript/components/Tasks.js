@@ -6,6 +6,7 @@ import { AddTask } from './AddTask'
 export const Tasks = () => {
     const {selectedList} = useSelectedListValue()
     const { tasks } = useTasksValue()
+    
 
     return ( (selectedList && tasks) ?
     <div className= "tasks">
