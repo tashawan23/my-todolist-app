@@ -7,7 +7,7 @@ import AddList from '../AddList'
 
 export const Sidebar = () => {
     const [showLists, setShowLists] = useState(false);
-    const [showToday, setShowToday] = useState(false);
+    //const [showToday, setShowToday] = useState(false);
 
     return (
         <div className="sidebar">

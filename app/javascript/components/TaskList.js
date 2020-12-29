@@ -1,24 +1,46 @@
 import React, { useState } from 'react'
-import { FaRegListAlt } from 'react-icons/fa'
-import { useListsValue } from '../context'
+import { useListsValue, useSelectedListValue } from '../context'
+import axios from 'axios'
 
 
 export const TaskList = ({ 
     showTaskLists,
+    setShowTaskLists,
     setList
 }) => {
 
-    const {lists} = useListsValue();
-        //const [showLists, setShowLists] = useState(false)
-    //const [showIcon, setShowIcon] = useState(true)
-    console.log(JSON.stringify(showTaskLists))
+    const {lists} = useListsValue()
+    const {setSelectedList} = useSelectedListValue()
+   
+    //set selcted list for new task to be added into
+    const updateList = e => {
+        axios.get(`/api/v1/lists/${e}`)
+       .then((resp) => {
+       console.log(resp)
+       setSelectedList(resp.data)})
+       .catch( content => console.log('Error', content)
+        )
+    }
 
    return (showTaskLists &&
-     (<div className="add-task__lists">
-         <select onChange={e => setList(e.target.value)}>
-            {lists.map(list => 
-              <option key={list.id} value={list.id}>{list.title}</option> )}
-        </select> 
+     (<div className="add-task__drop">
+         <ul className="add-task__drop-menu">
+             {lists.map(list =>
+                <li key={list.id}>
+                <div
+                  onClick={() => {
+                    setList(list.id);
+                    updateList(list.id);
+                    setShowTaskLists(false)
+                  }}
+                  role="button"
+                  tabIndex={0}
+                  aria-label="Select list"
+                >
+                  {list.title}
+                </div>
+              </li> )}
+         </ul>
         </div>)
     )
 }

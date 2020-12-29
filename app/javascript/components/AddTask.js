@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import { useListsValue, useSelectedListValue, useTasksValue } from '../context'
 import axios from 'axios'
-import { FaCalendarAlt, FaRegListAlt } from 'react-icons/fa';
-import { TaskList } from './TaskList';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+import { FaCalendarAlt, FaRegListAlt } from 'react-icons/fa'
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
+import { TaskList } from './TaskList'
 
 export const AddTask = ({
     showAddMain,
@@ -13,14 +13,12 @@ export const AddTask = ({
     displayQuick = false,
     }) => {
 
-
-    const {selectedList} = useSelectedListValue();
+    const {selectedList, setSelectedList} = useSelectedListValue()
     const [showQuickAdd, setShowQuickAdd] = useState(showQuickAddTask)
     const[taskDate, setTaskDate] = useState(new Date())
-    //show lists for user to select list 
     const [showTaskLists, setShowTaskLists] = useState(false)
-    const[name, setName] = useState("");
-    const {tasks, setTasks} = useTasksValue();
+    const[name, setName] = useState("")
+    const {tasks, setTasks} = useTasksValue()
     const[list, setList] = useState("")
     const[showQuick, setShowQuick] = useState(displayQuick)
     const[showTaskDate, setShowTaskDate] = useState(false)
@@ -32,15 +30,15 @@ export const AddTask = ({
         setShowAddMain(false)
     }
 
+    //create new task and update state of tasks for selected list
     const handleSubmit = e => {
-        e.preventDefault();
+        e.preventDefault()
         const task = {
             name: name,
             completed: false,
             date: taskDate,
             list_id: parseInt(list_id)
         }
-            console.log(task)
          list_id 
             && name
             && axios.post('/api/v1/tasks', task
@@ -54,11 +52,7 @@ export const AddTask = ({
         })})
             .catch( content => console.log('Error', content))
     }
-    //console.log(tasks)
-
-    const handleChangeDate = date => {
-        setTaskDate(date)
-    }
+   
 
     return (
         <div className={showAddMain ? "add-task add-task__menu" : "add-task"}>
@@ -76,24 +70,17 @@ export const AddTask = ({
     {(showQuick || showAddMain) && (
         <div className="add-task__main">
           {showAddMain && (
-        <>
+        //<>
         <div>
             <div className="add-task__header">Create a new Task</div>
         <div className="add-task__cross"
         onClick={ () => {
             setShowAddMain(false)
         }}
-        onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              setShowAddMain(false)
-            }
-          }}
-          tabIndex={0}
-          role="button"
         > X
         </div>
         </div>
-        </>
+        //</>
           )}
             <input
               className="add-task__input"
@@ -102,54 +89,57 @@ export const AddTask = ({
               value={name}
               onChange={e => setName(e.target.value)}
             />
-            <div
+            <span
               className="add-task__button"
               onClick={handleSubmit}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  handleSubmit
+                }
+              }}
             >
               Add
-            </div>
-            <div
+            </span>
+            <span
             className="add-task__cancel"
             onClick={() => handleClick()}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') handleClick() ;
-            }}
             role="button"
             tabIndex={0}
           >
             Cancel
-          </div>
-          { showTaskDate && <DatePicker selected={taskDate} onChange={handleChangeDate} /> }
+          </span>
           <span
               className="add-task__date"
               onClick={() => setShowTaskDate(!showTaskDate)}
               onKeyDown={(e) => {
-              if (e.key === 'Enter') setShowTaskDate(!showTaskDate);
+              if (e.key === 'Enter') setShowTaskDate(!showTaskDate)
               }}
               tabIndex={0}
               role="button"
               >
                   <FaCalendarAlt />
                   </span>
-          {showAddMain &&      
-              <span
-              className="add-task__lists"
-              onClick={() => setShowTaskLists(!showTaskLists)}
-              onKeyDown={(e) => {
-              if (e.key === 'Enter') setShowTaskLists(!showTaskLists);
-              }}
-              tabIndex={0}
-              role="button"
+                  { showTaskDate && 
+                  <DatePicker className="add-task__datepick" selected={taskDate} onChange={e => setTaskDate(e)} /> 
+          }
+                  {showAddMain &&
+                  <span
+                  className="add-task__lists"
+                  onClick={() => setShowTaskLists(!showTaskLists)}
+                  tabIndex={0}
+                  role="button"
               >
                   <FaRegListAlt />
                   </span>
-                  }
+    }
                   {showAddMain &&
-              <TaskList 
-              showTaskLists={showTaskLists} 
-              setList={setList} 
-               />   
-            }
+                  <TaskList
+                  showTaskLists={showTaskLists} 
+                  setShowTaskLists={setShowTaskLists}
+                  setList={setList} 
+                  setSelectedList={setSelectedList}
+               />  
+                  }
         </div>
     )}
         </div> 

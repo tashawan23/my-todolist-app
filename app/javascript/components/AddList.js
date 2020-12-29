@@ -4,18 +4,17 @@ import { useListsValue } from '../context'
 import axios from 'axios'
 
 const AddList = ({shouldDisplay = false}) => {
-    const {lists, setLists} = useListsValue();
-    const[display, setDisplay] = useState(shouldDisplay);
-    const[list, setList] = useState({ title: ""});
-    const[title, setTitle] = useState("");
+    const {lists, setLists} = useListsValue()
+    const[display, setDisplay] = useState(shouldDisplay)
+    const[list, setList] = useState({ title: ""})
+    const[title, setTitle] = useState("")
 
     const handleChange = e => {
-        setList(Object.assign({}, list, {[e.target.name]: e.target.value}));
-        setTitle(e.target.value);
+        setList(Object.assign({}, list, {[e.target.name]: e.target.value}))
+        setTitle(e.target.value)
     }
 
-    //handle form submit to add list data to database and set display of form 
-    //to false
+    //handle form submit to create new list and set display of form to false
     const handleSubmit = e => {
         e.preventDefault();
        axios.post('/api/v1/lists', {...list})
@@ -29,12 +28,12 @@ const AddList = ({shouldDisplay = false}) => {
     }
         
     return (
-        <form className="add-list">
+        <form className="sidebar__add-list">
       {display && (
-      <div className="add-list__inner">
-          <div className="add-list__header">Create a new List</div>
+      <div className="sidebar__add-list__inner">
+          <div className="sidebar__add-list__header">Create a new List</div>
             <input
-              className="add-list__input"
+              className="sidebar__add-list__input"
               type="text"
               placeholder="Add List Title"
               name="title"
@@ -43,16 +42,16 @@ const AddList = ({shouldDisplay = false}) => {
             />
             <br />
             <button
-              className="add-list__button"
+              className="sidebar__add-list__submit"
               onClick={handleSubmit}
             >
               Add
             </button>
             <button
-            className="add-list__cancel"
+            className="sidebar__add-list__cancel"
             onClick={() => setDisplay(false)}
             onKeyDown={(e) => {
-              if (e.key === 'Enter') setDisplay(false);
+              if (e.key === 'Enter') setDisplay(false)
             }}
             role="button"
             tabIndex={0}
@@ -61,14 +60,14 @@ const AddList = ({shouldDisplay = false}) => {
           </button>
         </div>
         )}
-        <span className="add-list__plus">
+        <span className="sidebar__add-list__plus">
         <span>+</span>
       <span
         aria-label="Add List"
-        className="add-list__title"
+        className="sidebar__add-list__button"
         onClick={() => setDisplay(!display)}
         onKeyDown={(e) => {
-          if (e.key === 'Enter') setDisplay(!display);
+          if (e.key === 'Enter') setDisplay(!display)
         }}
         role="button"
         tabIndex={0}

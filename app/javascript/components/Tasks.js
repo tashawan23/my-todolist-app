@@ -1,11 +1,11 @@
-import React, {useState, useEffect} from 'react'
-import { useTasksValue, useSelectedListValue } from '../context';
+import React from 'react'
+import { useTasksValue, useSelectedListValue } from '../context'
 import { Task } from './Task'
-import { AddTask } from './AddTask';
+import { AddTask } from './AddTask'
 
 export const Tasks = () => {
-    const {selectedList} = useSelectedListValue();
-    const { tasks } = useTasksValue();
+    const {selectedList} = useSelectedListValue()
+    const { tasks } = useTasksValue()
 
     return ( (selectedList && tasks) ?
     <div className= "tasks">

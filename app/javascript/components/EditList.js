@@ -1,14 +1,16 @@
 import React, {useState} from 'react'
 import axios from 'axios'
-import { useListsValue } from '../context';
-import { FaTrashAlt } from 'react-icons/fa';
+import { useListsValue } from '../context'
+import { FaTrashAlt } from 'react-icons/fa'
 
 
 export const EditList = props => {
 
     const[title, setTitle] = useState("")
-    const {lists, setLists} = useListsValue();
+    const {lists, setLists} = useListsValue()
 
+
+    //update lists state after updating list title
     const updateLists = () => {
         const newList = props.list
         newList.title = title
@@ -17,15 +19,16 @@ export const EditList = props => {
         setLists(temp)
     }
     
+    //update list title
     const editTitle = e => {
-        //e.preventDefault();
         axios.patch(`/api/v1/lists/${props.list.id}`, {title: title })
         .then(() => {
             props.setEdit(!props.edit)
             updateLists()})
             .catch( content => console.log('Error', content))
     }
-    //delete list from database and remove list from array of lists in state
+
+    //delete list from database and update lists state
     const handleDelete = id => {
         axios.delete(`/api/v1/lists/${id}`).
       then(res => {
@@ -33,7 +36,7 @@ export const EditList = props => {
          const index = included.findIndex( (res) => res.id == id)
          included.splice(index, 1)
          props.setLists(included)
-         console.log(included)
+         props.setEdit(!props.edit)
       })
       .catch( data => console.log('Error', data) )
     }
@@ -45,11 +48,10 @@ export const EditList = props => {
         <span className="edit-list__cross"
         onClick={ () => {
             props.setEdit(false)
-            console.log('clicked')
         }}
           tabIndex={0}
           role="button"
-        > x
+        > X
         </span>
         <li>
         <input
@@ -67,13 +69,13 @@ export const EditList = props => {
               Confirm
             </span>
             <span
-                className="sidebar__list-delete"
+                className="edit-list__delete"
                 tabIndex={0}
                 role="button"
                 aria-label="Delete list"
                 onClick={() => handleDelete(props.list.id)}
                 >
-                    <span><FaTrashAlt /></span>
+                    Delete List <FaTrashAlt className="edit-list__trash" />
                     </span>
             </ul>
         </div>

@@ -1,14 +1,14 @@
 import React, {useState} from 'react'
-import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa';
-import axios from 'axios';
-import { useListsValue } from '../context';
-import { EditList } from './EditList';
+import { FaPencilAlt } from 'react-icons/fa'
+import axios from 'axios'
+import { useListsValue } from '../context'
+import { EditList } from './EditList'
 
 
 
 const List = props => {
-    const { lists, setLists } = useListsValue();
-    const[edit, setEdit] = useState(false);
+    const { lists, setLists } = useListsValue()
+    const[edit, setEdit] = useState(false)
 
     //delete list from database and remove list from array of lists in state
     const handleDelete = id => {
@@ -20,12 +20,12 @@ const List = props => {
          setLists(included)
          console.log(included)
       })
-      .catch( data => console.log('Error', data) )
+      .catch( data => console.log('Error', data))
     }
   
    
     return (
-        <div>
+        <div className="sidebar__list-item">
         <span className="sidebar__list-dot">•</span>
         <span>{props.list.title}</span>
                     <div

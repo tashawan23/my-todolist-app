@@ -1,15 +1,11 @@
 import React, { useState, useEffect, Fragment } from 'react'
 import List from './List'
-import { useListsValue, useSelectedListValue } from '../context';
-import { FaPencilAlt } from 'react-icons/fa';
-import { EditList } from './EditList';
+import { useListsValue, useSelectedListValue } from '../context'
 
 const Lists = () => {
-    const { lists } = useListsValue();
-    const[selected, setSelected] = useState('');
-    const { setSelectedList } = useSelectedListValue();
-    const[edit, setEdit] = useState(false);
-
+    const { lists } = useListsValue()
+    const[selected, setSelected] = useState('')
+    const { setSelectedList } = useSelectedListValue()
   
     return (
         lists.map((value, index) => (
@@ -24,15 +20,13 @@ const Lists = () => {
               role="button"
               aria-label={`Select ${value.title} as list`}
               onClick={() => {
-                setSelected(value.id);
-                setSelectedList(value);
-                console.log('pressed')
+                setSelected(value.id)
+                setSelectedList(value)
               }}
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
-                  setSelected(value.id);
-                  setSelectedList(value);
-                  console.log(value.id)
+                  setSelected(value.id)
+                  setSelectedList(value)
                 }
               }}
             >
