@@ -57,3 +57,6 @@ This todo list aims to allow users to keep track of tasks that need to be comple
 3. Create the weekly page - tasks that need to be completed in that week
 4. Categorise tasks based on date
 5. Create a homepage
+
+
+Tasha Marion Wan A0204986U
