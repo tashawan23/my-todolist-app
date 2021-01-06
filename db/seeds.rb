@@ -1,4 +1,6 @@
 lists = List.create([
+    {title: "TASKINBOX"
+    },
     { title: "Christmas To do"
      },
      { title: "Morning routine"}
@@ -7,19 +9,19 @@ lists = List.create([
 tasks = Task.create([
     { name: "Workout!",
       completed: false,
-      list: lists.second
+      list: lists.third
 },
     { name: "Go to the post office",
     completed: false,
-    list: lists.second
+    list: lists.third
 },
     { name: "Write christmas cards",
     completed: false,
-    list: lists.first
+    list: lists.second
 },
     { name: "Wrap gifts",
     completed: false,
-    list: lists.first
+    list: lists.second
 }
 
 ])

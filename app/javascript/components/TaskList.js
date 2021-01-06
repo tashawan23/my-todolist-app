@@ -22,10 +22,12 @@ export const TaskList = ({
         )
     }
 
+    var allLists = lists.filter((list) => list.title != "TASKINBOX")
+
    return (showTaskLists &&
      (<div className="add-task__drop">
          <ul className="add-task__drop-menu">
-             {lists.map(list =>
+             {allLists.map(list =>
                 <li key={list.id}>
                 <div
                   onClick={() => {

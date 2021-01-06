@@ -3,7 +3,8 @@ import { FaCalendarAlt, FaEllipsisH, FaTrashAlt } from 'react-icons/fa'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import axios from 'axios'
-import { useSelectedListValue, useTasksValue } from '../context'
+import moment from 'moment'
+import { useSelectedListValue, useTasksValue, useTodayInboxValue, useTodayTasksValue } from '../context'
 
 export const EditTask = props => {
     const [showEdit, setShowEdit] = useState(false)
@@ -12,29 +13,40 @@ export const EditTask = props => {
     const {selectedList} = useSelectedListValue()
     const[taskDate, setTaskDate] = useState(new Date(props.task.date))
     const[showTaskDate, setShowTaskDate] = useState(false)
+    const { todayTasks, setTodayTasks } = useTodayTasksValue()
+    const { todayInbox } = useTodayInboxValue()
     //const [date,setDate] = useState(props.task.date)
 
+   
     //update task name or date and tasks state
     const handleSubmit = e => {
+      var today = moment().format('YYYY-MM-DD')
       e.preventDefault()
       axios.patch(`/api/v1/tasks/${props.task.id}`, {name: name, date: taskDate })
-      .then(() => 
+      .then(() => { !todayInbox?
           axios.get(`/api/v1/lists/${selectedList.id}`)
             .then((res) => 
-            setTasks(res.data.tasks)
-      ))
+            setTasks(res.data.tasks))
+            : axios.get('/api/v1/tasks')
+            .then((res) => 
+            setTodayTasks(res.data.filter((task) => task.date == today))
+      )})
           .catch( content => console.log('Error', content))
           setShowEdit(false)
   }
 
   //delete task from database and update tasks state
+  const selectedTasks = todayInbox? todayTasks : tasks
   const handleDelete = id => {
     axios.delete(`/api/v1/tasks/${id}`).
     then(res => {
-     const included = [...tasks]
+     const included = [...selectedTasks]
      const index = included.findIndex( (res) => res.id == id)
      included.splice(index, 1)
-     setTasks(included)
+     todayInbox?
+     setTodayTasks(included)
+     : setTasks(included)
+     setShowEdit(false)
     })
     .catch( data => console.log('Error', data))
 }

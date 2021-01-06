@@ -5,27 +5,34 @@ import List from './List'
 import {Navbar} from './layout/Navbar'
 import {Sidebar} from './layout/Sidebar'
 import './App.scss'
-import { ListsProvider, SelectedListProvider, TasksProvider, TodayInboxProvider } from '../context'
+import { ListsProvider, SelectedListProvider, TasksProvider, TodayInboxProvider, TodayTasksProvider, WeeklyInboxProvider } from '../context'
 import { Tasks } from './Tasks'
+import { TaskInboxProvider } from '../context/taskInbox-context'
 
 const App = () => {
 
     return (
         <SelectedListProvider>
+            <TaskInboxProvider>
             <TodayInboxProvider>
         <ListsProvider>
             <TasksProvider>
+                <TodayTasksProvider>
         <Navbar />
+        {/* <section className="main"> */}
         <Sidebar />
         <Tasks />
+        {/* </section> */}
         <BrowserRouter>
         <Switch>
             <Route exact path="/lists/:slug" component={List}/>
          </Switch>
          </BrowserRouter>
+         </TodayTasksProvider>
          </TasksProvider>
          </ListsProvider>
          </TodayInboxProvider>
+         </TaskInboxProvider>
          </SelectedListProvider>
     )
 }

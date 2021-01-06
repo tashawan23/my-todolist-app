@@ -45,12 +45,6 @@ module Api
     
             end
 
-            # def all_tasks 
-            #     completed = Task.where(completed: true)
-            #     incomplete = Task.where(completed: false)
-            #     render json: {completed: completed. incomplete: incomplete}
-            # end
-            
             
             private def task_params
                 params.require(:task).permit(:name, :list_id, :completed, :date)

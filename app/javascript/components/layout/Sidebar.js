@@ -1,23 +1,32 @@
-import React, {useState, useEffect} from 'react'
-import { FaChevronDown, FaRegCalendarAlt, FaRegClock } from 'react-icons/fa'
+import React, {useState } from 'react'
+import { FaArchive, FaChevronDown, FaRegClock } from 'react-icons/fa'
 import Lists  from '../Lists'
-import { useListsValue, useTodayInboxValue } from '../../context'
+import { useListsValue, useSelectedListValue, useTaskInboxValue, useTodayInboxValue } from '../../context'
 import AddList from '../AddList'
+import axios from 'axios'
 
 
 export const Sidebar = () => {
     const [showLists, setShowLists] = useState(false)
     const { todayInbox, setTodayInbox} = useTodayInboxValue()
+    const { taskInbox, setTaskInbox} = useTaskInboxValue()
+    const {selectedList, setSelectedList} = useSelectedListValue()
+    //console.log(todayInbox)
 
     return (
         <div className="sidebar">
             <ul className="sidebar__generic">
                 <li>
                     <span >
-                        <FaRegCalendarAlt />
+                        <FaArchive />
                         </span>
-                    <span>
-                        Weekly
+                    <span 
+                    className="sidebar__inbox"
+                    onClick={()=> {
+                        setTaskInbox(true)
+                        setTodayInbox(false)}}
+                    >
+                        Task Inbox
                         </span>
                     </li>
                 <li>
@@ -26,7 +35,11 @@ export const Sidebar = () => {
                         </span>
                     <span
                     className="sidebar__today"
-                    onClick={() => setTodayInbox(!todayInbox)}>
+                    onClick={()=> {
+                        setTodayInbox(true)
+                        setTaskInbox(false)
+                        setSelectedList("")
+                    }} >
                         Today
                         </span>
                     </li>

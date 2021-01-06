@@ -1,14 +1,19 @@
-import React, { useState, useEffect, Fragment } from 'react'
+import React, { useState} from 'react'
 import List from './List'
-import { useListsValue, useSelectedListValue } from '../context'
+import { useListsValue, useSelectedListValue, useTaskInboxValue, useTodayInboxValue } from '../context'
+
 
 const Lists = () => {
     const { lists } = useListsValue()
     const[selected, setSelected] = useState('')
-    const { setSelectedList } = useSelectedListValue()
+    const { selectedList,setSelectedList } = useSelectedListValue()
+    const { todayInbox, setTodayInbox} = useTodayInboxValue()
+    const { setTaskInbox} = useTaskInboxValue()
+    
+    var allLists = lists.filter((list) => list.title != "TASKINBOX")
   
     return (
-        lists.map((value, index) => (
+      allLists.map((value, index) => (
           <li
             className={
               selected === value.slug
@@ -22,11 +27,16 @@ const Lists = () => {
               onClick={() => {
                 setSelected(value.id)
                 setSelectedList(value)
+                setTodayInbox(false)
+                setTaskInbox(false)
+
               }}
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
                   setSelected(value.id)
                   setSelectedList(value)
+                  setTodayInbox(false)
+                  setTaskInbox(false)
                 }
               }}
             >
@@ -34,6 +44,6 @@ const Lists = () => {
             </div>
           </li>
         ))
-      );
-    };
+      )
+    }
 export default Lists

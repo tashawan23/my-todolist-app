@@ -1,10 +1,12 @@
-import React, {useState, useEffect} from 'react'
-import { useListsValue, useSelectedListValue, useTasksValue } from '../context'
+import React, {useState} from 'react'
+import { useSelectedListValue, useTaskInboxValue, useTasksValue, useTodayInboxValue, useTodayTasksValue } from '../context'
 import axios from 'axios'
-import { FaCalendarAlt, FaRegListAlt } from 'react-icons/fa'
+import { FaCalendar, FaCalendarAlt, FaRegListAlt } from 'react-icons/fa'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { TaskList } from './TaskList'
+import moment from 'moment'
+
 
 export const AddTask = ({
     showAddMain,
@@ -18,20 +20,23 @@ export const AddTask = ({
     const[taskDate, setTaskDate] = useState(new Date())
     const [showTaskLists, setShowTaskLists] = useState(false)
     const[name, setName] = useState("")
-    const {tasks, setTasks} = useTasksValue()
+    const {setTasks} = useTasksValue()
     const[list, setList] = useState("")
     const[showQuick, setShowQuick] = useState(displayQuick)
     const[showTaskDate, setShowTaskDate] = useState(false)
+    const { setTodayTasks } = useTodayTasksValue()
+    const { todayInbox } = useTodayInboxValue()
 
-    const list_id = list || selectedList.id
+    const list_id = todayInbox? 1 :(list || selectedList.id)
 
         const handleClick = () => {
         setShowQuick(false)
-        setShowAddMain(false)
+        //setShowAdd(false)
     }
-
+ 
     //create new task and update state of tasks for selected list
     const handleSubmit = e => {
+      var today = moment().format('YYYY-MM-DD')
         e.preventDefault()
         const task = {
             name: name,
@@ -44,11 +49,16 @@ export const AddTask = ({
             && axios.post('/api/v1/tasks', task
             )
         .then(() => {
-            axios.get(`/api/v1/lists/${list_id}`)
+          !todayInbox && axios.get(`/api/v1/lists/${list_id}`)
+            .then((res) => 
+            setTasks(res.data.tasks))
+            axios.get('/api/v1/tasks')
             .then((res) => {
-            setTasks(res.data.tasks)
+            setTodayTasks(res.data.filter((task) => task.date == today))
+            
             setShowQuick(false)
-            setName("")
+            setShowAddMain(false)
+            setName("") 
         })})
             .catch( content => console.log('Error', content))
     }
@@ -100,15 +110,15 @@ export const AddTask = ({
             >
               Add
             </span>
-            <span
+            {showQuick && <span
             className="add-task__cancel"
             onClick={() => handleClick()}
             role="button"
             tabIndex={0}
           >
             Cancel
-          </span>
-                  {showAddMain &&
+          </span>}
+          {showAddMain &&
                   <TaskList
                   showTaskLists={showTaskLists} 
                   setShowTaskLists={setShowTaskLists}
@@ -126,21 +136,18 @@ export const AddTask = ({
                   <FaRegListAlt />
                   </span>
           }
-          <span
+          {!todayInbox && <span
               className="add-task__date"
               onClick={() => setShowTaskDate(!showTaskDate)}
-              onKeyDown={(e) => {
-              if (e.key === 'Enter') setShowTaskDate(!showTaskDate)
-              }}
               tabIndex={0}
               role="button"
               >
                   <FaCalendarAlt />
                   </span>
-                   { showTaskDate && 
-                  <DatePicker className="add-task__datepick" selected={taskDate} onChange={e => setTaskDate(e)} /> 
+                  }
+                  {!todayInbox && showTaskDate && 
+                 <DatePicker className="add-task__datepick" selected={taskDate} onChange={e => setTaskDate(e)} /> 
           }
-          
         </div>
     )}
         </div> 

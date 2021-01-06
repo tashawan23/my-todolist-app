@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import { FaCheckCircle, FaRegCalendarPlus, FaRegPaperPlane } from 'react-icons/fa'
+import { useSelectedListValue } from '../../context'
 import { AddTask } from '../AddTask'
 
 export const Navbar = () => {
     const [showAddMain, setShowAddMain] = useState(false)
+    const { setSelectedList } = useSelectedListValue()
 
     const handleClick = () => {
         setShowAddMain(true)
+        //setSelectedList()
     }
     return (
         <header className="header">
@@ -25,9 +28,9 @@ export const Navbar = () => {
                         aria-label="Create task"
                         onClick={() => { handleClick() }}
                 >
-                     <span className="add-task-cal">
+                     <button className="add-task-cal">
                          <FaRegCalendarPlus />
-                     </span>
+                     </button>
                      </span>
                      </div>
             </nav>
