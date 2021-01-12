@@ -4,24 +4,23 @@ import { Task } from './Task'
 import { AddTask } from './AddTask'
 import axios from 'axios'
 import moment from 'moment';
-import { useInboxTasks, useTodayTasks } from './hooks'
+import { useInboxTasks } from './hooks'
 
 export const Tasks = () => {
     const {selectedList} = useSelectedListValue()
     const { tasks } = useTasksValue()
     const { todayInbox } = useTodayInboxValue()
-    const { todayTasks } = useTodayTasks(moment().format('YYYY-MM-DD'))
+    const { todayTasks } = useTodayTasksValue()
     const { taskInbox } = useTaskInboxValue()
-    const {inboxTasks } = useInboxTasks()
+    const { inboxTasks } = useInboxTasks()
     
-    console.log(todayTasks)
 
     return (todayInbox ? 
     <div className= "tasks__today">
     <span className="tasks__header">
         <h3>Today's Tasks</h3>
         </span>
-    <span className="tasks__date">{moment().format('MMMM Do YYYY')}</span>
+    <span className="tasks__date">Good day! These are your tasks for {moment().format('MMMM Do YYYY')}</span>
     <ul className="tasks__list">
         {todayTasks.map((value) =>
         <li key={value.id}>

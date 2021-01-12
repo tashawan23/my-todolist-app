@@ -46,10 +46,14 @@ export const useTodayTasks = date => {
 export const useInboxTasks = () => {
     const [inboxTasks, setInboxTasks] = useState([])
     const { tasks } = useTasksValue()
+    const func = (a, b) => {
+    return a.date < b.date ? -1 : 1
+    }
+
     useEffect(() => {
         axios.get('/api/v1/tasks')
             .then((res) => {
-            setInboxTasks(res.data.filter(task => task.completed == false))})
+            setInboxTasks(res.data.filter(task => task.completed == false).sort(func))})
     }, [tasks.filter(task => task.completed == false).length])
 
     return { inboxTasks, setInboxTasks };

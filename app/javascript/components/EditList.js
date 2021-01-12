@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import axios from 'axios'
-import { useListsValue } from '../context'
+import { useListsValue, useSelectedListValue, useTaskInboxValue } from '../context'
 import { FaTrashAlt } from 'react-icons/fa'
 
 
@@ -8,7 +8,9 @@ export const EditList = props => {
 
     const[title, setTitle] = useState("")
     const {lists, setLists} = useListsValue()
-
+    const { setTaskInbox} = useTaskInboxValue()
+    const { selectedList, setSelectedList } = useSelectedListValue()
+   
 
     //update lists state after updating list title
     const updateLists = () => {
@@ -17,6 +19,7 @@ export const EditList = props => {
         const temp = [...lists]
         temp.filter(list => list.id !== props.list.id)
         setLists(temp)
+        //setSelectedList(newList)
     }
     
     //update list title
@@ -37,6 +40,8 @@ export const EditList = props => {
          included.splice(index, 1)
          props.setLists(included)
          props.setEdit(!props.edit)
+         setTaskInbox(true)
+
       })
       .catch( data => console.log('Error', data) )
     }

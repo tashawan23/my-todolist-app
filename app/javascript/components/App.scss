@@ -85,7 +85,9 @@ header {
 
 .add-task-cal {
   cursor: pointer;
-  margin-left: 300px;
+  margin-left: 700px;
+  margin-right:-440px;
+  margin-top: 5px;
   
   &:hover {
     border-radius: 3px;
@@ -373,6 +375,10 @@ nav {
   font-size: 15px;
 }
 
+.task-date {
+  margin-left: 20px;
+  color: rgb(235, 86, 86);
+}
 
 .add-task__icon {
   cursor: pointer;
@@ -654,11 +660,11 @@ nav {
 
 .edit-task {
   float:right;
-  margin-right: 40px;
+  margin-left: 6px;
 
   &__dots {
     cursor: pointer;
-    color: gray;
+    color: #cacaca;
     &:hover {
       background-color: rgb(245, 243, 243);
       border-radius: 3px;
@@ -780,6 +786,75 @@ nav {
   } 
 
 
+}
+.show-reminders{
+button {
+  @include transparent-button();
+  cursor: pointer;
+            svg {
+              width: 20px;
+              height: 20px;
+            }
+}
+}
+
+.show-reminders-icon {
+  cursor: pointer;
+  //margin-left: 320px;
+  //margin-right: 30px;
+  
+  &:hover {
+    border-radius: 3px;
+    background-color: rgba(163, 157, 157, 0.2);
+  }
+}
+
+.task-reminder {
+  margin-left: 960px;
+  vertical-align: top;
+  padding-left: 90px;
+  padding-right: 40px;
+  padding-top: 80px;
+  padding-bottom: 84px;
+ 
+  &__title {
+    font-size: 17px;
+  }
+  
+  &__tasks {
+    list-style-type: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  &__dot {
+    color: salmon;
+   // font-size: 35px;
+  }
+
+  &__name {
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+}
+.star-task{
+  &__icon {
+    //margin-right: 60px;
+    float:right;
+    margin-top: -14px;
+    color: #cacaca;
+    cursor: pointer;
+    &:hover {
+      color: orange;
+      
+    }
+  }
+    &__colouredIcon {
+      //margin-right: 60px;
+      float:right;
+      margin-top: -14px;
+      color: orange;
+      cursor: pointer;
+    }
 }
 
 

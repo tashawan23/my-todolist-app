@@ -9,7 +9,8 @@ lists = List.create([
 tasks = Task.create([
     { name: "Workout!",
       completed: false,
-      list: lists.third
+      list: lists.third,
+      star: true,
 },
     { name: "Go to the post office",
     completed: false,

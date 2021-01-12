@@ -6,6 +6,7 @@ import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { TaskList } from './TaskList'
 import moment from 'moment'
+import { useTodayTasks } from './hooks'
 
 
 export const AddTask = ({
@@ -24,7 +25,7 @@ export const AddTask = ({
     const[list, setList] = useState("")
     const[showQuick, setShowQuick] = useState(displayQuick)
     const[showTaskDate, setShowTaskDate] = useState(false)
-    const { setTodayTasks } = useTodayTasksValue()
+    const { setTodayTasks } = useTodayTasks()
     const { todayInbox } = useTodayInboxValue()
 
     const list_id = todayInbox? 1 :(list || selectedList.id)
@@ -36,13 +37,15 @@ export const AddTask = ({
  
     //create new task and update state of tasks for selected list
     const handleSubmit = e => {
+      //setShowAddMain(false)
       var today = moment().format('YYYY-MM-DD')
         e.preventDefault()
         const task = {
             name: name,
             completed: false,
             date: taskDate,
-            list_id: parseInt(list_id)
+            list_id: parseInt(list_id),
+            star: false
         }
          list_id 
             && name
@@ -55,7 +58,6 @@ export const AddTask = ({
             axios.get('/api/v1/tasks')
             .then((res) => {
             setTodayTasks(res.data.filter((task) => task.date == today))
-            
             setShowQuick(false)
             setShowAddMain(false)
             setName("") 

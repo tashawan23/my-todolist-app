@@ -5,6 +5,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 import axios from 'axios'
 import moment from 'moment'
 import { useSelectedListValue, useTasksValue, useTodayInboxValue, useTodayTasksValue } from '../context'
+import { useTodayTasks } from './hooks'
 
 export const EditTask = props => {
     const [showEdit, setShowEdit] = useState(false)
@@ -14,6 +15,7 @@ export const EditTask = props => {
     const[taskDate, setTaskDate] = useState(new Date(props.task.date))
     const[showTaskDate, setShowTaskDate] = useState(false)
     const { todayTasks, setTodayTasks } = useTodayTasksValue()
+    //useTodayTasks(moment().format('YYYY-MM-DD'))
     const { todayInbox } = useTodayInboxValue()
     //const [date,setDate] = useState(props.task.date)
 
@@ -37,6 +39,7 @@ export const EditTask = props => {
 
   //delete task from database and update tasks state
   const selectedTasks = todayInbox? todayTasks : tasks
+  //console.log(selectedTasks)
   const handleDelete = id => {
     axios.delete(`/api/v1/tasks/${id}`).
     then(res => {
@@ -45,7 +48,7 @@ export const EditTask = props => {
      included.splice(index, 1)
      todayInbox?
      setTodayTasks(included)
-     : setTasks(included)
+     :setTasks(included)
      setShowEdit(false)
     })
     .catch( data => console.log('Error', data))
