@@ -375,6 +375,11 @@ nav {
   font-size: 15px;
 }
 
+.task-icons {
+  float: right;
+  //margin-right: 0px;
+}
+
 .task-date {
   margin-left: 20px;
   color: rgb(235, 86, 86);
@@ -659,8 +664,10 @@ nav {
 }
 
 .edit-task {
-  float:right;
-  margin-left: 6px;
+  //float: right;
+  margin-left: 25px;
+  margin-top: -14px;
+  //margin-right: 70px;
 
   &__dots {
     cursor: pointer;
@@ -837,24 +844,24 @@ button {
   }
 }
 .star-task{
-  &__icon {
-    //margin-right: 60px;
-    float:right;
-    margin-top: -14px;
-    color: #cacaca;
-    cursor: pointer;
-    &:hover {
-      color: orange;
-      
+   &__icon {
+     margin-right: 30px;
+     //margin-top: -14px;
+     color: #cacaca;
+     cursor: pointer;
+     &:hover {
+       color: orange;
+     }
+     }
+     &__colouredIcon {
+//       //margin-right: 60px;
+//       float:right;
+       //margin-top: -14px;
+       margin-right: 30px;
+       color: orange;
+       cursor: pointer;
+     }
     }
-  }
-    &__colouredIcon {
-      //margin-right: 60px;
-      float:right;
-      margin-top: -14px;
-      color: orange;
-      cursor: pointer;
-    }
-}
+
 
 

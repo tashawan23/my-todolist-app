@@ -6,16 +6,14 @@ import { Reminder } from '../Reminder'
 
 export const Navbar = () => {
     const [showAddMain, setShowAddMain] = useState(false)
-    const { todayInbox, setTodayInbox } = useTodayInboxValue()
+    const { setTodayInbox } = useTodayInboxValue()
     const [showReminders, setShowReminders] = useState(false)
 
 
     const handleClick = () => {
         setShowAddMain(true)
         setTodayInbox(false)
-        //setSelectedList()
     }
-
 
 
     return (

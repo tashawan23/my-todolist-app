@@ -19,8 +19,10 @@ export const Task = props => {
             {taskInbox && (today > date) &&
             <span className="task-date">{props.task.date}</span>
             }
-            <EditTask task={props.task}/>
+            <span className="task-icons">
             <StarTask task={props.task}/>
+            <EditTask task={props.task}/>
+            </span>
         </div>
     )
 }

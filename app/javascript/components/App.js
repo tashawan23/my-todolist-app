@@ -19,10 +19,8 @@ const App = () => {
             <TasksProvider>
                 <TodayTasksProvider>
         <Navbar />
-        {/* <section className="main"> */}
         <Sidebar />
         <Tasks />
-        {/* </section> */}
         <BrowserRouter>
         <Switch>
             <Route exact path="/lists/:slug" component={List}/>

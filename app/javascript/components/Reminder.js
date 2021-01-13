@@ -5,13 +5,14 @@ import axios from 'axios'
 
 export const Reminder = props => {
     const [starTasks, setStarTasks] = useState([])
-
+    
+    //retrive tasks that have been marked as important
     useEffect(() => {
         axios.get('/api/v1/tasks')
         .then((res) => {
         setStarTasks(res.data.filter((task) => task.star == true))
         })
-    })
+    }, [])
     
 
     return (

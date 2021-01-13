@@ -27,8 +27,8 @@ export const useTasks = selectedList => {
     }, [selectedList]);
 
     return { tasks, setTasks };
-
 }
+
 export const useTodayTasks = date => {
     const [todayTasks, setTodayTasks] = useState([])
     const { tasks } = useTasksValue()
@@ -46,6 +46,8 @@ export const useTodayTasks = date => {
 export const useInboxTasks = () => {
     const [inboxTasks, setInboxTasks] = useState([])
     const { tasks } = useTasksValue()
+    
+    //sort inbox tasks by date to be completed
     const func = (a, b) => {
     return a.date < b.date ? -1 : 1
     }

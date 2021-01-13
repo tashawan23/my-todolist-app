@@ -15,9 +15,7 @@ export const EditTask = props => {
     const[taskDate, setTaskDate] = useState(new Date(props.task.date))
     const[showTaskDate, setShowTaskDate] = useState(false)
     const { todayTasks, setTodayTasks } = useTodayTasksValue()
-    //useTodayTasks(moment().format('YYYY-MM-DD'))
     const { todayInbox } = useTodayInboxValue()
-    //const [date,setDate] = useState(props.task.date)
 
    
     //update task name or date and tasks state

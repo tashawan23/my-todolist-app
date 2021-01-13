@@ -8,10 +8,10 @@ import axios from 'axios'
 
 export const Sidebar = () => {
     const [showLists, setShowLists] = useState(false)
-    const { todayInbox, setTodayInbox} = useTodayInboxValue()
-    const { taskInbox, setTaskInbox} = useTaskInboxValue()
-    const {selectedList, setSelectedList} = useSelectedListValue()
-    //console.log(todayInbox)
+    const { setTodayInbox} = useTodayInboxValue()
+    const { setTaskInbox} = useTaskInboxValue()
+    const { setSelectedList} = useSelectedListValue()
+   
 
     return (
         <div className="sidebar">

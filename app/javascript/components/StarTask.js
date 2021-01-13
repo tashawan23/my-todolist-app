@@ -16,6 +16,7 @@ export const StarTask = props => {
         setTasks(temp)
 
     }
+    
     const colourStar = e => {
         const bool = props.task.star
         e.preventDefault();

@@ -9,7 +9,6 @@ export const EditList = props => {
     const[title, setTitle] = useState("")
     const {lists, setLists} = useListsValue()
     const { setTaskInbox} = useTaskInboxValue()
-    const { selectedList, setSelectedList } = useSelectedListValue()
    
 
     //update lists state after updating list title
