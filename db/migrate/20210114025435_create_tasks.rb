@@ -4,11 +4,8 @@ class CreateTasks < ActiveRecord::Migration[6.0]
       t.string :name
       t.boolean :completed
       t.date :date
+      t.boolean :star
       t.belongs_to :list, null: false, foreign_key: true
-     
-
-
-      t.timestamps
     end
   end
 end
