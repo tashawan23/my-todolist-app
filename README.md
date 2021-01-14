@@ -15,8 +15,8 @@ This todo list aims to allow users to keep track of tasks that need to be comple
 * Task name and date can be edited from the icon next to each task
 
 3. Complete tasks
-Mark task as completed by checking checkbox next to each task
-Tasks that have yet to be completed will be shown in the task inbox
+* Mark task as completed by checking checkbox next to each task
+* Tasks that have yet to be completed will be shown in the task inbox
 
 4. Task date
 * Set task date for each task to mark date to be completed
