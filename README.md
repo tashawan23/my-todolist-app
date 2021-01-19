@@ -1,4 +1,6 @@
-# MyToDo
+# MyToDo 
+
+Tasha Marion Wan A0204986U
 
 ### Scope of project
 This todo list aims to allow users to keep track of tasks that need to be completed. Users can categorise these tasks based on different categories in each list or by date. Users will be able to create, edit and delete tasks and lists.
@@ -57,4 +59,3 @@ This todo list aims to allow users to keep track of tasks that need to be comple
 
 
 
-Tasha Marion Wan A0204986U
