@@ -55,7 +55,7 @@ This todo list aims to allow users to keep track of tasks that need to be comple
 | Title         | String        | Title of list of tasks             |
 | Slug          | String        | Parameter to identify list         |
 
-
+Deployed on Heroku:  https://my-special-todolist.herokuapp.com/
 
 
 
