@@ -120,7 +120,7 @@ nav {
 }
 
 .sidebar {
-  width: 300px;
+  width: 285px;
   min-height: calc(100vh);
   //vertical-align: top;
   padding-top: 74px;
@@ -148,7 +148,7 @@ nav {
         padding-left: 10px;
         cursor: pointer;
         min-height: 0;
-        overflow-y: scroll;
+        //overflow-y: scroll;
     
         span:first-of-type {
           color: #0000008a;
@@ -223,7 +223,7 @@ nav {
 
     &__generic {
       min-height: 0;
-      overflow-y: scroll;
+      //overflow-y: scroll;
 
         li {
           font-family: 'PT Sans', sans-serif;
@@ -314,7 +314,7 @@ nav {
 .tasks__today {
   width: 656px;
   background-color: white;
-  margin-left: 300px;
+  margin-left: 285px;
   min-height: calc(100vh);
   vertical-align: top;
   padding-left: 40px;
@@ -326,7 +326,7 @@ nav {
 .tasks {
   width: 656px;
   background-color: white;
-  margin-left: 300px;
+  margin-left: 285px;
   min-height: calc(100vh);
   vertical-align: top;
   padding-left: 40px;
@@ -508,7 +508,6 @@ nav {
   }
   
 &__drop-menu {
-  overflow-y: scroll;
 
   li {
   margin-left: -35px;
@@ -817,7 +816,7 @@ button {
 }
 
 .task-reminder {
-  margin-left: 960px;
+  margin-left: 970px;
   vertical-align: top;
   padding-left: 90px;
   padding-right: 40px;
