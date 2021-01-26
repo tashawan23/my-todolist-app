@@ -8,8 +8,8 @@ import axios from 'axios'
 
 export const Sidebar = () => {
     const [showLists, setShowLists] = useState(false)
-    const { setTodayInbox} = useTodayInboxValue()
-    const { setTaskInbox} = useTaskInboxValue()
+    const { setTodayInbox } = useTodayInboxValue()
+    const { setTaskInbox } = useTaskInboxValue()
     const { setSelectedList} = useSelectedListValue()
    
 

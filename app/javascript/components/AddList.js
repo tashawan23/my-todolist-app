@@ -14,7 +14,7 @@ const AddList = ({shouldDisplay = false}) => {
         setTitle(e.target.value)
     }
 
-    //handle form submit to create new list and set display of form to false
+    /**handle form submit to create new list and set display of form to false*/
     const handleSubmit = e => {
         e.preventDefault();
        axios.post('/api/v1/lists', {...list})

@@ -61,5 +61,18 @@ export const useInboxTasks = () => {
     return { inboxTasks, setInboxTasks };
 }
 
+export const useStarredTasks = () => {
+    const [starredTasks, setStarredTasks] = useState([])
+    const { tasks } = useTasksValue()
+    useEffect(() => {
+        axios.get('/api/v1/tasks')
+            .then((res) => {
+                setStarredTasks(res.data.filter((task) => task.star == true))
+            })
+            .catch( content => console.log('Error', content))}
+            ,[tasks.filter(task => task.star == true).length])
+    return { starredTasks, setStarredTasks };
+
+}
 
 

@@ -11,7 +11,7 @@ export const EditList = props => {
     const { setTaskInbox} = useTaskInboxValue()
    
 
-    //update lists state after updating list title
+    /**update lists state after updating list title*/
     const updateLists = () => {
         const newList = props.list
         newList.title = title
@@ -21,7 +21,7 @@ export const EditList = props => {
         //setSelectedList(newList)
     }
     
-    //update list title
+    /**update list title*/
     const editTitle = e => {
         axios.patch(`/api/v1/lists/${props.list.id}`, {title: title })
         .then(() => {
@@ -30,7 +30,7 @@ export const EditList = props => {
             .catch( content => console.log('Error', content))
     }
 
-    //delete list from database and update lists state
+    /**delete list from database and update lists state*/
     const handleDelete = id => {
         axios.delete(`/api/v1/lists/${id}`).
       then(res => {

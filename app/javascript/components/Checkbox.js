@@ -7,7 +7,7 @@ import { FaCheck} from 'react-icons/fa'
 export const Checkbox = props => {
     const {tasks, setTasks} = useTasksValue()
 
-    //update tasks state after selected task has been marked completed
+    /**update tasks state after selected task has been marked completed*/
     const updateTasks = () => {
         const newTask = props.task
         newTask.completed = !newTask.completed
@@ -17,7 +17,7 @@ export const Checkbox = props => {
 
     }
 
-    //update task to completed when checkbox is clicked
+    /**update task to completed when checkbox is clicked*/
     const checkTask = e => {
         const bool = props.task.completed
         e.preventDefault();

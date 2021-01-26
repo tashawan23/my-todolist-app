@@ -18,7 +18,7 @@ export const EditTask = props => {
     const { todayInbox } = useTodayInboxValue()
 
    
-    //update task name or date and tasks state
+    /**update task name or date and tasks state*/
     const handleSubmit = e => {
       var today = moment().format('YYYY-MM-DD')
       e.preventDefault()
@@ -35,9 +35,8 @@ export const EditTask = props => {
           setShowEdit(false)
   }
 
-  //delete task from database and update tasks state
+  /**delete task from database and update tasks state*/
   const selectedTasks = todayInbox? todayTasks : tasks
-  //console.log(selectedTasks)
   const handleDelete = id => {
     axios.delete(`/api/v1/tasks/${id}`).
     then(res => {

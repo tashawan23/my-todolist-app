@@ -12,7 +12,7 @@ export const TaskList = ({
     const {lists} = useListsValue()
     const {setSelectedList} = useSelectedListValue()
    
-    //set selcted list for new task to be added into
+    /**set selcted list for new task to be added into*/
     const updateList = e => {
         axios.get(`/api/v1/lists/${e}`)
        .then((resp) => {

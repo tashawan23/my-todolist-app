@@ -5,7 +5,7 @@ import List from './List'
 import {Navbar} from './layout/Navbar'
 import {Sidebar} from './layout/Sidebar'
 import './App.scss'
-import { ListsProvider, SelectedListProvider, TasksProvider, TodayInboxProvider, TodayTasksProvider, WeeklyInboxProvider } from '../context'
+import { ListsProvider, SelectedListProvider, StarredTasksProvider, TasksProvider, TodayInboxProvider, TodayTasksProvider, WeeklyInboxProvider } from '../context'
 import { Tasks } from './Tasks'
 import { TaskInboxProvider } from '../context/taskInbox-context'
 
@@ -18,6 +18,7 @@ const App = () => {
         <ListsProvider>
             <TasksProvider>
                 <TodayTasksProvider>
+                    <StarredTasksProvider>
         <Navbar />
         <Sidebar />
         <Tasks />
@@ -26,6 +27,7 @@ const App = () => {
             <Route exact path="/lists/:slug" component={List}/>
          </Switch>
          </BrowserRouter>
+         </StarredTasksProvider>
          </TodayTasksProvider>
          </TasksProvider>
          </ListsProvider>

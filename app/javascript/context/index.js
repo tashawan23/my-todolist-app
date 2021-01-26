@@ -34,7 +34,11 @@ import {
     useTodayTasksValue,
   } from './todayTasks-context';
 
-
+  import {
+    StarredTasksContext,
+    StarredTasksProvider,
+    useStarredTasksValue,
+  } from './starredTasks-context';
 
    export {
     ListsContext,
@@ -54,5 +58,8 @@ import {
     useTodayTasksValue,
     TaskInboxContext,
     TaskInboxProvider,
-    useTaskInboxValue
+    useTaskInboxValue,
+    StarredTasksContext,
+    StarredTasksProvider,
+    useStarredTasksValue
   };

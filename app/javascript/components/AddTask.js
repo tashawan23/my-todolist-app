@@ -35,7 +35,7 @@ export const AddTask = ({
         //setShowAdd(false)
     }
  
-    //create new task and update state of tasks for selected list
+    /**create new task and update state of tasks for selected list*/
     const handleSubmit = e => {
       //setShowAddMain(false)
       var today = moment().format('YYYY-MM-DD')

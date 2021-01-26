@@ -1,22 +1,23 @@
 import React from 'react'
 import axios from 'axios'
 import { FaStar } from 'react-icons/fa'
-import { useTasksValue } from '../context'
+import { useStarredTasksValue, useTasksValue } from '../context'
 
 
 export const StarTask = props => {
-    const {tasks, setTasks} = useTasksValue()
+    //const {tasks, setTasks} = useTasksValue()
+    const {starredTasks, setStarredTasks} = useStarredTasksValue();
 
-    //update tasks state after selected task has been marked completed
+    /**update tasks state after selected task has been marked completed*/
     const updateTasks = () => {
         const newTask = props.task
         newTask.star = !newTask.star
-        const temp = [...tasks]
+        const temp = [...starredTasks]
         temp.filter(task => task.id !== props.task.id)
-        setTasks(temp)
+        setStarredTasks(temp)
 
     }
-    
+
     const colourStar = e => {
         const bool = props.task.star
         e.preventDefault();
