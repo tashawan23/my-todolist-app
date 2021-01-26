@@ -5,10 +5,9 @@ import { useStarredTasksValue, useTasksValue } from '../context'
 
 
 export const StarTask = props => {
-    //const {tasks, setTasks} = useTasksValue()
     const {starredTasks, setStarredTasks} = useStarredTasksValue();
 
-    /**update tasks state after selected task has been marked completed*/
+    /**update starred tasks state*/
     const updateTasks = () => {
         const newTask = props.task
         newTask.star = !newTask.star
@@ -18,6 +17,7 @@ export const StarTask = props => {
 
     }
 
+    /**Mark task as important*/
     const colourStar = e => {
         const bool = props.task.star
         e.preventDefault();
@@ -26,6 +26,7 @@ export const StarTask = props => {
             updateTasks()})
             .catch( content => console.log('Error', content))
     }
+
     return (
         <div className="star-task">
             <span className={ props.task.star ? "star-task__colouredIcon" : "star-task__icon"}

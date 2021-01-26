@@ -18,7 +18,6 @@ export const EditList = props => {
         const temp = [...lists]
         temp.filter(list => list.id !== props.list.id)
         setLists(temp)
-        //setSelectedList(newList)
     }
     
     /**update list title*/

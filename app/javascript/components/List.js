@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import { FaEllipsisH } from 'react-icons/fa'
-import axios from 'axios'
 import { useListsValue } from '../context'
 import { EditList } from './EditList'
 

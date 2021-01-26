@@ -32,7 +32,6 @@ export const AddTask = ({
 
         const handleClick = () => {
         setShowQuick(false)
-        //setShowAdd(false)
     }
  
     /**create new task and update state of tasks for selected list*/
